@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>Developing Data Products Project</title>
+	<meta name="description" content="Developing Data Products Project">
+	<meta name="author" content="Ryan Seeto">
+	<meta name="generator" content="slidify" />
+	
+	<!-- LOAD STYLE SHEETS -->
+	<link rel="stylesheet" href="libraries/frameworks/html5slides/default/styles.css">
+	<link rel="stylesheet" href="libraries/highlighters/prettify/css/tomorrow.css" />    
+</head>
+<body style='display: none'>
+	<section class='slides layout-regular template-regular'>
+     <article class="" id="slide-1" style="background:;">
+  <h3>Introduction</h3>
+  <p>This Slidify presentation is created for the November 2014 offering of Coursera&#39;s &quot;Developing Data Products.&quot;  The purpose of this project is to investigate if there was a difference in the location of deaths of all the deaths registered by the City of Toronto.</p>
+
+</article>
+
+<article class="" id="slide-2" style="background:;">
+  <h3>Methodology</h3>
+  <p>Data was collected from the <a href="http://www1.toronto.ca/wps/portal/contentonly?vgnextoid=7c4da9552dbfe310VgnVCM10000071d60f89RCRD&amp;vgnextchannel=1a66e03bb8d1e310VgnVCM10000071d60f89RCRD">Toronto Open Data</a> project.   </p>
+
+<p>The civic centre where the death was registered was not relevant, therefore, the dataset was reshapped to include just the location of death (&quot;Outside City Limits&quot; vs. &quot;Toronto&quot;) and the time period.</p>
+
+</article>
+
+<article class="" id="slide-3" style="background:;">
+  <h3>Results</h3>
+  <pre><code class="r">deathdata &lt;- read.csv(&quot;deathdata.csv&quot;, sep = &quot;\t&quot;)
+t.test(deathdata$Outside_City_Limits, deathdata$Toronto)
+</code></pre>
+
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  deathdata$Outside_City_Limits and deathdata$Toronto
+## t = -31.2612, df = 56.266, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -960.9268 -845.2009
+## sample estimates:
+## mean of x mean of y 
+##  275.8085 1178.8723
+</code></pre>
+
+<p>A t-test revealed that there are significantly more deaths occuring in Toronto than outside the city limits.</p>
+
+</article>
+
+<article class="" id="slide-4" style="background:;">
+  <h3>Discussion</h3>
+  <p>The difference in death location may be attributed to the fact that there is a larger population in metropolitan Toronto than outside the city limits.  Further research is warrented before drawing any conclusions.</p>
+
+</article>
+
+<article class="" id="slide-5" style="background:;">
+  <h3>Closing Remarks</h3>
+  <p>Happy Holidays!</p>
+
+</article>
+
+  </section>
+</body>
+  <!-- LOAD JAVASCRIPTS  -->
+	<script src='libraries/frameworks/html5slides/default/slides.js'></script>
+	<!-- Google Prettify -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+	<script src='libraries/highlighters/prettify/js/lang-r.js'></script>
+	<script>
+	  var pres = document.getElementsByTagName("pre");
+	  for (var i=0; i < pres.length; ++i) {
+	    pres[i].className = "prettyprint linenums";
+	  }
+	  prettyPrint();
+	</script>
+	<!-- End Google Prettify --> 
+	</html>
